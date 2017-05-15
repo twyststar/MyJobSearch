@@ -1,0 +1,52 @@
+<div class="well">
+  <% if @openings.any? %>
+    <h3>All openings</h3>
+    <ul>
+      <% @openings.each do |opening| %>
+        <li><a href="/openings/<%=opening.id%>"><%= opening.name %></a></li>
+        <% end %>
+    </ul>
+  <% else %>
+    <h3>No openings listed yet.</h3>
+  <% end %>
+
+</div>
+
+<div class="well">
+  <form class="form-horizontal" action="/openings/new" method="post">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name">
+    </div>
+    <div class="form-group">
+      <label for="location">Location:</label>
+      <input type="text" id="cvr_letter" name="cvr_letter">
+    </div>
+    <div class="form-group">
+      <label for="desc">Description:</label>
+      <input type="text" id="desc" name="desc">
+    </div>
+    <div class="form-group">
+      <label for="salary">Salary:</label>
+      <input type="number" id="salary" name="salary" min="0">
+    </div>
+    <div class="form-group">
+      <label for="link">Link:</label>
+      <input type="text" id="link" name="link">
+    </div>
+    <% if @organizations.any? %>
+      <div class="form-group">
+        <select name="organization_id">
+          <% @organizations.each do |organization| %>
+            <option><%= organization.name %></option>
+          <% end %>
+        </select>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <label for="notes">Notes:</label>
+      <input type="text" id="notes" name="notes">
+    </div>
+    <button class="btn btn-info" type="submit" name="button">Submit</button>
+  </form>
+</div>

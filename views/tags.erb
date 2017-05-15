@@ -1,0 +1,21 @@
+<div class="well">
+  <% if @tags.any? %>
+    <ul>
+      <% @tags.each do |tag| %>
+      <li><a href="/single_tag/<%= tag.id %>"><%= tag.name %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <h3>No tags yet.</h3>
+  <% end %>
+
+
+</div>
+
+<div class="well">
+   <form class="horizontal-inline" action="/tags/new" method="post">
+     <label for="name">Category/Tag Name:</label>
+     <input type="text" id="name" name="name">
+     <button type="submit" name="button">Submit</button>
+   </form>
+</div>
