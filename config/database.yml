@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
-  database: data1_development
+  database: job_tracker_development
 
 test:
   adapter: postgresql
-  database: data1_test
+  database: job_tracker_test

@@ -1,5 +1,5 @@
 require('spec_helper')
 
-describe(Class1) do
-  
+describe(Opening) do
+
 end
