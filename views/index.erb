@@ -1,18 +1,53 @@
-<div class="well">
-  <h2>Job Tracker</h2>
-  <p>
+<div class="row">
+  <div class="col-md-8">
+    <div id="simple-calendar">
+      <div class="row">
+        <div class="col-md-3" id="previous-icon">
+          <a href="/previous_month/<%= @count %>"><img src="/img/img1.png" class="previous-icon"></a>
+        </div>
+        <div class="col-md-6">
+          <h1 class="month"><%= @month %>  <%= @starting_date.year %></h1>
+        </div>
+        <div class="col-md-3">
+          <a href="/next_month/<%= @count %>"><img src="/img/img2.png" class="next-icon"></a>
+        </div>
+      </div>
+      <table>
+        <tr>
+          <th class="week-days">Su</th>
+          <th class="week-days">Mo</th>
+          <th class="week-days">Tu</th>
+          <th class="week-days">We</th>
+          <th class="week-days">Th</th>
+          <th class="week-days">Fr</th>
+          <th class="week-days">Sa</th>
+        </tr>
+        <% @simple_calendar.each do |week| %>
+        <tr class="days">
+          <% week.each do |day| %>
+            <td class="matrix <%= day[1] %>"><a class = "day" href="/calendar/view/<%= day[0]%>"><%= day[0].day%></a></td>
+          <% end %>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+  <div class="well col-md-4">
+    <h2>Job Tracker</h2>
+    <p>
 
-  </p>
-  <p>
-    <a href="/tags">View or add a classifications/tags you would like to reference.</a>
-  </p>
-  <p>
-    <a href="/contacts">Add a new contact.</a>
-  </p>
-  <p>
-    <a href="/openings">Add a new opening/job search.</a>
-  </p>
-  <p>
-    <a href="/organizations">Add a new organization you would like to follow.</a>
-  </p>
+    </p>
+    <p>
+      <a href="/tags">View or add a classifications/tags you would like to reference.</a>
+    </p>
+    <p>
+      <a href="/contacts">Add a new contact.</a>
+    </p>
+    <p>
+      <a href="/openings">Add a new opening/job search.</a>
+    </p>
+    <p>
+      <a href="/organizations">Add a new organization you would like to follow.</a>
+    </p>
+  </div>
 </div>

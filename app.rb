@@ -2,10 +2,31 @@ require("bundler/setup")
 Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 require('pry')
+
 get('/') do
   if Organization.all == []
     Organization.create({:name => ('Misc'), :headquarters => ("NA"), :desc => ("Catch-all category for one-off openings."), :link => ("NA")})
   end
+  @count = 0
+  @starting_date = Time.now.months_since(@count).to_date
+  @month = Date::MONTHNAMES[@starting_date.month]
+  @simple_calendar = Calendar.new({:date => @starting_date}).days_of_month
+  erb(:index)
+end
+
+get('/previous_month/:counter') do
+  @count = params[:counter].to_i - 1
+  @starting_date = Time.now.months_since(@count).to_date
+  @month = Date::MONTHNAMES[@starting_date.month]
+  @simple_calendar = Calendar.new({:date => @starting_date}).days_of_month
+  erb(:index)
+end
+
+get('/next_month/:counter') do
+  @count = params[:counter].to_i + 1
+  @starting_date = Time.now.months_since(@count).to_date
+  @month = Date::MONTHNAMES[@starting_date.month]
+  @simple_calendar = Calendar.new({:date => @starting_date}).days_of_month
   erb(:index)
 end
 
