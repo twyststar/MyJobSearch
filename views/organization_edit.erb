@@ -1,0 +1,38 @@
+<div class="well">
+  <form class="form-horizontal" action="/organizations_edit/<%= @organization.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" value="<%= @organization.name %>">
+    </div>
+    <div class="form-group">
+      <label for="headquarters">Location:</label>
+      <input type="text" id="headquarters" name="headquarters" value="<%= @organization.headquarters %>">
+    </div>
+    <div class="form-group">
+      <label for="desc">Description:</label>
+      <input type="text" id="desc" name="desc" value="<%= @organization.desc %>">
+    </div>
+    <div class="form-group">
+      <label for="link">Link:</label>
+      <input type="text" id="link" name="link" value="<%= @organization.link %>">
+    </div>
+    <% if @contacts.any? %>
+      <div class="form-group">
+        <h4>Contacts for this opening:</h4>
+        <% @organization.not_contact.each do |contact| %>
+        <label for="contact_ids[]"><%= contact.name %> <input type="checkbox" id="contact_ids[]" name="contact_ids[]" value="<%= contact.id %>"></label>
+        <% end %>
+      </div>
+    <% end %>
+    <% if @tags.any? %>
+      <div class="form-group">
+        <h4>Categories/Tags:</h4>
+        <% @organization.not_tag.each do |tag| %>
+        <label for="tag_ids[]"><%= tag.name %> <input type="checkbox" id="tag_ids[]" name="tag_ids[]" value="<%= tag.id %>"></label>
+        <% end %>
+      </div>
+    <% end %>
+    <button class="btn btn-info" type="submit" name="button">Submit</button>
+  </form>
+</div>

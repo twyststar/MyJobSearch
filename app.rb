@@ -120,10 +120,36 @@ post('/organizations/new') do
   erb(:organizations)
 end
 
+patch('/organizations_edit/:id') do
+  organization = Organization.find(params.fetch("id").to_i)
+  contact_ids =(params[:contact_ids])
+  tag_ids = (params[:tag_ids])
+  if tag_ids!= nil
+    tag_ids.each do |tag_id|
+      tag_id.to_i
+      organization.tags.push(Tag.find(tag_id))
+    end
+  end
+  if contact_ids!= nil
+    contact_ids.each do |contact_id|
+      organization.contacts.push(Contact.find(contact_id))
+    end
+  end
+  organization.update({:name => (params[:name]), :headquarters => (params[:headquarters]), :desc => (params[:desc]), :link => (params[:link])})
+  redirect ('/single_organization/' + params[:id])
+end
+
 get('/single_organization/:id') do
   @organization = Organization.find(params.fetch("id").to_i)
   @openings = @organization.openings
   erb(:single_organization)
+end
+
+get('/single_organization/edit/:id') do
+  @contacts = Contact.all
+  @tags = Tag.all()
+  @organization = Organization.find(params.fetch("id").to_i)
+  erb(:organization_edit)
 end
 
 get('/contacts') do
