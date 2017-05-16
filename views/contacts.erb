@@ -1,17 +1,15 @@
-
-<% if @contacts.any? %>
-  <div class="well">
+<div class="well">
+  <% if @contacts.any? %>
     <h3>All contacts:</h3>
     <ul>
       <% @contacts.each do |contact| %>
-        <li><a href="/contacts/<%=contact.id%>"><%= contact.name %></a></li>
+        <li><a href="/single_contact/<%=contact.id%>"><%= contact.name %></a></li>
         <% end %>
     </ul>
-<% else %>
+  <% else %>
     <h3>No contacts listed yet.</h3>
-  </div>
-<% end %>
-
+  <% end %>
+</div>
 
 
 <div class="well">

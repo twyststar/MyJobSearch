@@ -3,7 +3,7 @@
     <h3>All openings:</h3>
     <ul>
       <% @openings.each do |opening| %>
-        <li><a href="/openings/<%=opening.id%>"><%= opening.name %></a></li>
+        <li><a href="/single_opening/<%=opening.id%>"><%= opening.name %>, <%= opening.organization.name %></a></li>
         <% end %>
     </ul>
   <% else %>
@@ -38,9 +38,25 @@
       <div class="form-group">
         <select name="organization_id">
           <% @organizations.each do |organization| %>
-            <option><%= organization.name %></option>
+            <option value="<%= organization.id %>"><%= organization.name %></option>
           <% end %>
         </select>
+      </div>
+    <% end %>
+    <% if @contacts.any? %>
+      <div class="form-group">
+        <h4>Contacts for this opening:</h4>
+        <% @contacts.each do |contact| %>
+        <label for="contact_ids[]"><%= contact.name %> <input type="checkbox" id="contact_ids[]" name="contact_ids[]" value="<%= contact.id %>"></label>
+        <% end %>
+      </div>
+    <% end %>
+    <% if @tags.any? %>
+      <div class="form-group">
+        <h4>Categories/Tags:</h4>
+        <% @tags.each do |tag| %>
+        <label for="tag_ids[]"><%= tag.name %> <input type="checkbox" id="tag_ids[]" name="tag_ids[]" value="<%= tag.id %>"></label>
+        <% end %>
       </div>
     <% end %>
     <div class="form-group">

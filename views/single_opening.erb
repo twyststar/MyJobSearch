@@ -1,0 +1,28 @@
+<div class="well">
+  <ul class="list-inline">
+  <% if @opening.tags.any? %>
+      <% @opening.tags.each do |tag| %>
+      <li><a href="/single_tag/<%=tag.id%>"><%= tag.name %></a></li>
+      <% end %>
+  <% end %>
+</ul>
+</div>
+<div class="well">
+  <h3>Position: <%= @opening.name %> @ <a href="/single_organization/<%=@opening.organization.id%>"><%= @opening.organization.name%></a></h3>
+  <br>
+  <ul>
+    <h6>Location:</h6>
+    <li><%= @opening.location %></li>
+    <h6>Salary:</h6>
+    <li><%= @opening.salary %></li>
+    <ul>
+      <h6>Brief description:</h6>
+      <li><%= @opening.desc %></li>
+      <h6>Notes:</h6>
+      <li><%= @opening.notes %></li>
+      <h6>Link:</h6>
+      <li><a href="" target="_blank"><%= @opening.link %></a></li>
+    </ul>
+  </ul>
+</div>
+<button type="button" class="btn btn-standard btn-block"><a href="/opening/edit/id">Edit this opening</a></button>

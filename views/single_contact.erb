@@ -1,0 +1,47 @@
+<div class="well">
+  <ul class="list-inline">
+  <% if @contact.tags.any? %>
+      <% @contact.tags.each do |tag| %>
+      <li><a href="/single_tag/<%=tag.id%>"><%= tag.name %></a></li>
+      <% end %>
+  <% end %>
+  </ul>
+</div>
+
+<div class="well row">
+  <div class="col-xs-6">
+    <h2><%= @contact.name %></h2>
+    <h4><%= @contact.title %></h4>
+    <br>
+    <ul>
+      <h6>Context:</h6>
+      <li><%= @contact.context %></li>
+
+      <h6>Notes:</h6>
+      <li><%= @contact.notes%></li>
+    </ul>
+  </div>
+  <div class="col-xs-6">
+
+    <ul>
+    <% if @contact.organizations.any? %>
+      <h6>Organizations:</h6>
+
+        <% @contact.organizations.each do |org| %>
+        <li> <a href="/single_organization/<%=org.id%>"><%=org.name%></a></li>
+        <% end %>
+    <% end %>
+    </ul>
+    <ul>
+      <h6>Address:</h6>
+      <li><%= @contact.address %></li>
+      <h6>Phone:</h6>
+      <li><%= @contact.phone %></li>
+      <h6>Email:</h6>
+      <li><%= @contact.email %></li>
+      <h6>Linkedin:</h6>
+      <li><a href="" target="_blank"><%= @contact.linkedin %></a></li>
+    </ul>
+  </div>
+</div>
+<button type="button" class="btn btn-standard btn-block"><a href="/contact/edit/id">Edit this contact</a></button>

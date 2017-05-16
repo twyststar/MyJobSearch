@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170515194545) do
+ActiveRecord::Schema.define(version: 20170516154128) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,11 +18,6 @@ ActiveRecord::Schema.define(version: 20170515194545) do
   create_table "calendars", force: :cascade do |t|
     t.date "date"
     t.string "notes"
-  end
-
-  create_table "calendars_interviews", force: :cascade do |t|
-    t.integer "calendar_id"
-    t.integer "interview_id"
   end
 
   create_table "calendars_openings", force: :cascade do |t|
@@ -33,10 +28,6 @@ ActiveRecord::Schema.define(version: 20170515194545) do
   create_table "calendars_organizations", force: :cascade do |t|
     t.integer "calendar_id"
     t.integer "organization_id"
-  end
-
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -66,13 +57,9 @@ ActiveRecord::Schema.define(version: 20170515194545) do
   end
 
   create_table "interviews", force: :cascade do |t|
-    t.string "notes"
     t.string "location"
-  end
-
-  create_table "interviews_openings", force: :cascade do |t|
-    t.integer "interview_id"
     t.integer "opening_id"
+    t.integer "calendar_id"
   end
 
   create_table "openings", force: :cascade do |t|

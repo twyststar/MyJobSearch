@@ -1,12 +1,18 @@
-<% if @organizations.any? %>
-  <div class="well">
+<div class="well">
+
+  <% if @organizations.any? %>
+    <h3>All organizations:</h3>
     <ul>
       <% @organizations.each do |organization| %>
-        <li><a href="/organizations/<%= organization.id %>"><%= organization.name %></a></li>
+        <li><a href="/single_organization/<%= organization.id %>"><%= organization.name %></a></li>
       <% end %>
     </ul>
-  </div>
-<% end %>
+  <% else %>
+      <h3>You have not added any organizations yet.</h3>
+
+  <% end %>
+</div>
+
 <div class="well">
   <form class="form-horizontal" action="/organizations/new" method="post">
     <div class="form-group">
@@ -25,6 +31,14 @@
       <label for="link">Link:</label>
       <input type="text" id="link" name="link">
     </div>
+    <% if @contacts.any? %>
+      <div class="form-group">
+        <h4>Contacts for this opening:</h4>
+        <% @contacts.each do |contact| %>
+        <label for="contact_ids[]"><%= contact.name %> <input type="checkbox" id="contact_ids[]" name="contact_ids[]" value="<%= contact.id %>"></label>
+        <% end %>
+      </div>
+        <% end %>
     <div class="form-group">
       <h4>Categories/Tags:</h4>
       <% @tags.each do |tag| %>
