@@ -4,6 +4,7 @@ Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 require('pry')
 
 get('/') do
+  @tags = Tag.all()
   if Organization.all == []
     Organization.create({:name => ('Misc'), :headquarters => ("NA"), :desc => ("Catch-all category for one-off openings."), :link => ("NA")})
   end
@@ -195,7 +196,7 @@ post('/contacts/new') do
       new_contact.organizations.push(Organization.find(organization_id))
     end
   end
-  erb(:index)
+  redirect '/contacts'
 end
 
 get('/single_contact/:id') do
