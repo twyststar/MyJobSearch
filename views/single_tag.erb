@@ -21,7 +21,7 @@
     <% if @tag.organizations.any? %>
       <ul>
         <% @tag.organizations.each do |org| %>
-          <li><a href="/single_organization/<%=organization.id%>"><%= organization.name %></a></li>
+          <li><a href="/single_organization/<%=org.id%>"><%= org.name %></a></li>
           <% end %>
       </ul>
     <% else %>

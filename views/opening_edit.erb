@@ -1,0 +1,56 @@
+<div class="well">
+  <h3>Edit the info for <%= @opening.name %>.</h3>
+  <form class="form-horizontal" action="/opening_edit/<%= @opening.id %>" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" value="<%= @opening.name %>">
+    </div>
+    <div class="form-group">
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" value="<%= @opening.location %>">
+    </div>
+    <div class="form-group">
+      <label for="desc">Description:</label>
+      <input type="text" id="desc" name="desc" value="<%= @opening.desc %>">
+    </div>
+    <div class="form-group">
+      <label for="salary">Salary:</label>
+      <input type="number" id="salary" name="salary" min="0" value="<%= @opening.salary %>">
+    </div>
+    <div class="form-group">
+      <label for="link">Link:</label>
+      <input type="text" id="link" name="link" value="<%= @opening.link %>">
+    </div>
+    <% if @organizations.any? %>
+      <div class="form-group">
+        <select name="organization_id">
+          <% @organizations.each do |organization| %>
+            <option value="<%= organization.id %>"><%= organization.name %></option>
+          <% end %>
+        </select>
+      </div>
+    <% end %>
+    <% if @contacts.any? %>
+      <div class="form-group">
+        <h4>Contacts for this opening:</h4>
+        <% @opening.not_contact.each do |contact| %>
+        <label for="contact_ids[]"><%= contact.name %> <input type="checkbox" id="contact_ids[]" name="contact_ids[]" value="<%= contact.id %>"></label>
+        <% end %>
+      </div>
+    <% end %>
+    <% if @tags.any? %>
+      <div class="form-group">
+        <h4>Categories/Tags:</h4>
+        <% @opening.not_tag.each do |tag| %>
+        <label for="tag_ids[]"><%= tag.name %> <input type="checkbox" id="tag_ids[]" name="tag_ids[]" value="<%= tag.id %>"></label>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <label for="notes">Notes:</label>
+      <input type="text" id="notes" name="notes">
+    </div>
+    <button class="btn btn-info" type="submit" name="button">Submit</button>
+  </form>
+</div>

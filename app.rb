@@ -35,7 +35,7 @@ end
 
 post('/openings/new') do
   tag_ids = (params[:tag_ids])
-  contact_ids =(params[:contact_ids])
+  contact_ids = (params[:contact_ids])
   organization_id = params.fetch('organization_id').to_i
   new_opening = Opening.create({:name => (params[:name]), :location => (params[:location]), :desc => (params[:desc]), :salary => (params[:salary]), :link => (params[:link]), :organization_id => organization_id, :notes => (params[:notes])})
 
@@ -57,11 +57,40 @@ post('/openings/new') do
   erb(:openings)
 end
 
+patch('/opening_edit/:id') do
+  @opening = Opening.find(params.fetch("id").to_i)
+  tag_ids = (params[:tag_ids])
+  contact_ids = (params[:contact_ids])
+  organization_id = params.fetch('organization_id').to_i
+  @opening.update({:name => (params[:name]), :location => (params[:location]), :desc => (params[:desc]), :salary => (params[:salary]), :link => (params[:link]), :organization_id => organization_id, :notes => (params[:notes])})
+  if tag_ids!= nil
+    tag_ids.each do |tag_id|
+      tag_id.to_i
+      @opening.tags.push(Tag.find(tag_id))
+    end
+  end
+  if contact_ids!= nil
+    contact_ids.each do |contact_id|
+      @opening.contacts.push(Contact.find(contact_id))
+    end
+  end
+    redirect ('/single_opening/' + params[:id])
+end
+
 get('/single_opening/:id') do
   @opening = Opening.find(params.fetch("id").to_i)
   @organization = @opening.organization
   erb(:single_opening)
 end
+
+get('/single_opening/edit/:id') do
+  @opening = Opening.find(params.fetch("id").to_i)
+  @organizations = Organization.all
+  @contacts = Contact.all
+  @tags = Tag.all()
+  erb(:opening_edit)
+end
+
 
 get('/organizations') do
   @contacts = Contact.all
@@ -107,7 +136,7 @@ end
 post('/contacts/new') do
   tag_ids = (params[:tag_ids])
   organization_ids =(params[:organization_ids])
-  new_contact = Contact.create({:name => (params[:name]), :title => (params[:title]), :address => (params[:address]), :phone => (params[:phone]), :email => (params[:email]), :linkedin => (params[:linkin]), :context => (params[:context]), :notes => (params[:notes])})
+  new_contact = Contact.create({:name => (params[:name]), :title => (params[:title]), :address => (params[:address]), :phone => (params[:phone]), :email => (params[:email]), :linkedin => (params[:linkedin]), :context => (params[:context]), :notes => (params[:notes])})
   if tag_ids!= nil
     tag_ids.each do |tag_id|
       tag_id.to_i
@@ -126,4 +155,30 @@ get('/single_contact/:id') do
   @contact = Contact.find(params.fetch("id").to_i)
 
   erb(:single_contact)
+end
+
+get('/single_contact/edit/:id') do
+  @contact = Contact.find(params.fetch("id").to_i)
+  @organizations = Organization.all
+  @tags = Tag.all()
+  erb(:contact_edit)
+end
+
+patch('/contact_edit/:id') do
+  contact = Contact.find(params.fetch("id").to_i)
+  tag_ids = (params[:tag_ids])
+  organization_ids =(params[:organization_ids])
+  if tag_ids!= nil
+    tag_ids.each do |tag_id|
+      tag_id.to_i
+      contact.tags.push(Tag.find(tag_id))
+    end
+  end
+  if organization_ids!= nil
+    organization_ids.each do |organization_id|
+      contact.organizations.push(Organization.find(organization_id))
+    end
+  end
+  contact.update({:name => (params[:name]), :title => (params[:title]), :address => (params[:address]), :phone => (params[:phone]), :email => (params[:email]), :linkedin => (params[:linkedin]), :context => (params[:context]), :notes => (params[:notes])})
+    redirect ('/single_contact/' + params[:id])
 end
