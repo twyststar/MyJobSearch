@@ -1,0 +1,31 @@
+.matrix {
+  border: 2px solid;
+  height: auto;
+  width: 2%;
+  font-size: 20px;
+  padding-bottom: 110px;
+}
+
+.month {
+  text-align: center;
+  font-size: 50px;
+}
+
+/** {
+  border: 1px solid;
+}*/
+
+#previous-icon {
+  padding-left: 21%;
+}
+
+.days {
+  padding: 10px 0;
+  margin: 0;
+}
+
+.week-days {
+  margin: 0;
+  padding: 10px 0;
+  text-align: center;
+}
