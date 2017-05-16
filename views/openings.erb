@@ -1,6 +1,6 @@
 <div class="well">
   <% if @openings.any? %>
-    <h3>All openings</h3>
+    <h3>All openings:</h3>
     <ul>
       <% @openings.each do |opening| %>
         <li><a href="/openings/<%=opening.id%>"><%= opening.name %></a></li>
@@ -20,7 +20,7 @@
     </div>
     <div class="form-group">
       <label for="location">Location:</label>
-      <input type="text" id="cvr_letter" name="cvr_letter">
+      <input type="text" id="location" name="location">
     </div>
     <div class="form-group">
       <label for="desc">Description:</label>

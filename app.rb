@@ -42,6 +42,7 @@ get('/single_opening/:id') do
 end
 
 get('/organizations') do
+  @contacts = Contact.all
   @organizations = Organization.all
   @tags = Tag.all()
   erb(:organizations)
@@ -57,4 +58,25 @@ post('/organizations/new') do
   @organizations = Organization.all
   @tags = Tag.all()
   erb(:organizations)
+end
+
+get('/contacts') do
+  @contacts = Contact.all
+  @organizations = Organization.all
+  @tags = Tag.all()
+  erb(:contacts)
+end
+
+post('/contacts/new') do
+  tag_ids = (params[:tag_ids])
+  organization_ids =(params[:organization_ids])
+  new_contact = Contact.create({:name => (params[:name]), :title => (params[:title]), :address => (params[:address]), :phone => (params[:phone]), :email => (params[:email]), :linkedin => (params[:linkin]), :context => (params[:context]), :notes => (params[:notes])})
+  tag_ids.each do |tag_id|
+    tag_id.to_i
+    new_contact.tags.push(Tag.find(tag_id))
+  end
+  organization_ids.each do |organization_id|
+    new_contact.organizations.push(Organization.find(organization_id))
+  end
+  erb(:index)
 end

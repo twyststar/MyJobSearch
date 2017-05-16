@@ -1,16 +1,11 @@
 <% if @organizations.any? %>
-<div class="well">
-  <ul>
-    <% @organizations.each do |organization| %>
-    <li><a href="/organizations/<%= organization.id %>"><%= organization.name %></a></li>
+  <div class="well">
     <ul>
-      <% organization.tags.each do |tag| %>
-      <li><%= tag.name %></li>
+      <% @organizations.each do |organization| %>
+        <li><a href="/organizations/<%= organization.id %>"><%= organization.name %></a></li>
       <% end %>
     </ul>
-    <% end %>
-  </ul>
-</div>
+  </div>
 <% end %>
 <div class="well">
   <form class="form-horizontal" action="/organizations/new" method="post">
