@@ -7,7 +7,9 @@ describe(Calendar) do
     it("returns the Calendar dates for the entire month") do
       test_month = Calendar.create(:date => Date.today)
       test_month1 = Calendar.create(:date => Date.today)
+      Calendar.find_date('2017-05-16')
       expect(test_month.days_of_month()).to eq(test_month1.days_of_month())
+
     end
   end
 
