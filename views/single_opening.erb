@@ -27,7 +27,15 @@
   </div>
 
   <div class="col-sm-6">
-    <h6>Notes:</h6>
+    <h4>Events:</h4>
+    <% if @opening.calendars.any? %>
+      <ul>
+        <% @opening.calendars.each do |date| %>
+        <li><%= date.date %>, <%= date.notes %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <h5>Notes:</h5>
     <% if @opening.notes.any? %>
       <ul>
         <% @opening.notes.each do |note| %>
@@ -38,4 +46,4 @@
   </div>
 
 </div>
-<button type="button" class="btn btn-block"><a href="/single_opening/edit/<%= @opening.id %>">Edit this opening: add notes, contacts, events etc.</a></button>
+<button type="button" class="btn btn-block">Edit this opening:<a href="/single_opening/edit/<%= @opening.id %>"> CLICK HERE</a> to add notes, contacts, events etc.</button>
