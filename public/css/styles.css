@@ -33,3 +33,15 @@
 .links {
   min-height: 850px;
 }
+
+.today {
+  background-color: lightblue;
+}
+
+.past {
+  background-color: #E4E5DF;
+}
+
+.note_date {
+  text-align: center;
+}

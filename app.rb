@@ -53,6 +53,12 @@ get('/next_month/:counter') do
   erb(:index)
 end
 
+get('/calendar/view/:calendar_date') do
+  @calendar_date = params[:calendar_date]
+  @calendar_events = Calendar.find_date(@calendar_date)
+  erb(:calendar_events)
+end
+
 get('/tags') do
   @tags = Tag.all()
   erb(:tags)

@@ -1,0 +1,14 @@
+<h1 class = "note_date jumbotron"><%= @calendar_date %></h1>
+<div class="jumbotron">
+  <% if @calendar_events.any? %>
+    <ul>
+      <% @calendar_events.each() do |event_id| %>
+        <% event = Calendar.find(event_id) %>
+        <li><%= event.notes() %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <h4>No notes yet</h4>
+  <% end %>
+
+</div>
