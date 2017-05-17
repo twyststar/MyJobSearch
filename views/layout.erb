@@ -4,25 +4,87 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|BioRhyme" rel="stylesheet">
     <meta charset="utf-8">
+    <script type="text/javascript" src="/bootstrap.min.js">
+
+    </script>
+    <link rel="stylesheet" href="/styles2.css">
     <link rel="stylesheet" href="/css/styles.css">
     <title>Job Searcher</title>
   </head>
   <body>
+    <div class="navbar-wrapper">
+  <div class="container">
+    <div class="navbar navbar-inverse navbar-static-top">
+
+        <div class="navbar-header">
+	    <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	    </a>
+        <a class="navbar-brand" href="#">Tracks</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class='nav nav-tabs'>
+            <li><a href='/'>Main Page</a></li>
+            <li><a href='/tags'>Tags</a></li>
+            <li><a href='/contacts'>Contacts</a></li>
+            <li><a href='/openings'>Openings</a></li>
+            <li><a href='/organizations'>Organizations</a></li>
+          </ul>
+        </div>
+    </div>
+  </div><!-- /container -->
+</div><!-- /navbar wrapper -->
+
+<div id="myCarousel" class="carousel slide">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="img/search.png" style="width:100%" class="img-responsive">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Tracks</h1>
+          <p>Your seach. Your job. Your network.</p>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="img/networking1.jpg" class="img-responsive">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Tracks</h1>
+          <p>Have trouble remembering where you met someone? There's a context for contacts.</p>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <img src="img/web.jpeg" class="img-responsive">
+      <div class="container">
+        <div class="carousel-caption">
+          <h1>Tracks</h1>
+          <p>Use the category tags to mark contacts, job openings and organizations- and view everything with that tag.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="icon-prev"></span>
+  </a>
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="icon-next"></span>
+  </a>
+</div>
+<!-- /.carousel -->
+
     <div class="container">
       <div class="row">
-        <div class="col-md-12 col-md-12 jumbotron">
-          <h1>Job Search</h1>
-          <div class='navbar'>
-            <ul class='nav nav-tabs'>
-              <li><a href='/'>Main Page</a></li>
-              <li><a href='/tags'>Tags</a></li>
-              <li><a href='/contacts'>Contacts</a></li>
-              <li><a href='/openings'>Openings</a></li>
-              <li><a href='/organizations'>Organizations</a></li>
-            </ul>
-          </div>
-        </div>
-
         <div class="col-md-2 well links">
           <h3>My Links</h3>
           <% my_links = My_link.all%>
