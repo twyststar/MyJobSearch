@@ -19,14 +19,14 @@ class Calendar < ActiveRecord::Base
 
   def self.find_date(calendar_date)
     dates = Calendar.all()
-    matching_date = ""
+    matching_date = 0
     dates.each do |date|
-      binding.pry
-      if date == calendar_date
-        matching_date = date
+      date_format = date.date
+      if date_format.strftime("%Y-%m-%d") == calendar_date
+        matching_date = date.id
       end
-      matching_date
     end
+    matching_date
   end
 
 

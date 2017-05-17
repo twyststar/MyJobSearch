@@ -7,9 +7,16 @@ describe(Calendar) do
     it("returns the Calendar dates for the entire month") do
       test_month = Calendar.create(:date => Date.today)
       test_month1 = Calendar.create(:date => Date.today)
-      Calendar.find_date('2017-05-16')
       expect(test_month.days_of_month()).to eq(test_month1.days_of_month())
+    end
+  end
 
+  describe('#find_date') do
+    it("returns the id of the found date") do
+      test_month = Calendar.create(:date => Time.now.months_since(1).to_date)
+      test_month1 = Calendar.create(:date => Date.today)
+binding.pry  
+      expect(Calendar.find_date('2017-05-17')).to eq(test_month1.id)
     end
   end
 
