@@ -60,6 +60,18 @@
 </div>
 
 <div class="well">
+  <form class="form-horizontal" action="/opening_event" method="post">
+    <input type="hidden" name="opening_id" value="<%= @opening.id %>">
+    <label for="date">Add event date:</label>
+    <input type="date" id="date" name="date">
+    <label for="note">Brief description and time:</label>
+    <input type="text" id="note" name="note">
+    <button type="submit" class="btn">Submit</button>
+  </form>
+
+</div>
+
+<div class="well">
   <form action="/opening_edit/<%=@opening.id%>" method="post">
     <input type="hidden" name="_method" value="delete">
     <button class="btn" type="submit" name="button">Delete <%=@opening.name%>?</button>

@@ -158,6 +158,14 @@ post('/opening_note')do
   redirect ('/single_opening/' + (params[:opening_id]))
 end
 
+post('/opening_event') do
+  opening_id = (params[:opening_id])
+  opening = Opening.find(opening_id.to_i)
+  date = (params[:date].to_date)
+  event = Calendar.create({:date => date, :notes => (params[:note])})
+  opening.calendars.push(event)
+  redirect ('/single_opening/' + opening_id)
+end
 get('/single_opening/:id') do
   @opening = Opening.find(params.fetch("id").to_i)
   @organization = @opening.organization
