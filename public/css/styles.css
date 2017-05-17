@@ -45,3 +45,8 @@
 .note_date {
   text-align: center;
 }
+
+.btn-block {
+  color: white;
+  background-color: black;
+}

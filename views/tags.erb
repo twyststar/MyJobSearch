@@ -19,3 +19,19 @@
      <button type="submit" name="button">Submit</button>
    </form>
 </div>
+
+<div class="well">
+  <h4>Delete a tag.</h4>
+
+  <form class="" action="/single_tag" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <% if @tags.any? %>
+      <div class="form-group">
+        <% @tags.each do |tag| %>
+        <label for="tag_ids[]"><%= tag.name %> <input type="checkbox" id="tag_ids[]" name="tag_ids[]" value="<%= tag.id %>"></label>
+        <% end %>
+      </div>
+      <button class="btn btn-danger" type="submit" name="button">Delete</button>
+    <% end %>
+  </form>
+</div>
