@@ -1,6 +1,6 @@
 .matrix {
   border: 2px solid;
-  height: auto;
+  max-height: auto;
   width: 2%;
   font-size: 20px;
   padding-bottom: 110px;
@@ -13,6 +13,10 @@
 
 /** {
   border: 1px solid;
+}*/
+
+/*.event {
+  background-color: green;
 }*/
 
 #previous-icon {

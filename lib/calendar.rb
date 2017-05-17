@@ -28,5 +28,20 @@ class Calendar < ActiveRecord::Base
     matching_date
   end
 
+  def self.find_notes(calendar_date)
+    dates = Calendar.all()
+    notes_for_day = 0
+    dates.each do |date|
+      date_format = date.date
+      if date_format.strftime("%Y-%m-%d") == calendar_date
+        event = Calendar.find(date.id)
+        if event.notes != nil
+          notes_for_day = notes_for_day + 1
+        end
+      end
+    end
+    notes_for_day
+  end
+
 
 end

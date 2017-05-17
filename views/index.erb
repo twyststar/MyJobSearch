@@ -25,7 +25,11 @@
         <% @simple_calendar.each do |week| %>
         <tr class="days">
           <% week.each do |day| %>
-            <td class="matrix <%= day[1] %>"><a class = "day" href="/calendar/view/<%= day[0]%>"><%= day[0].day%></a></td>
+            <td class="matrix <%= day[1] %>"><a class = "day" href="/calendar/view/<%=  day[0]%>"><%= day[0].day%></a>
+              <% if Calendar.find_notes(day[0].strftime("%Y-%m-%d")) > 0 %>
+                <img src="/img/sticky.png" alt="event" />
+              <% end %>
+            </td>
           <% end %>
         </tr>
         <% end %>

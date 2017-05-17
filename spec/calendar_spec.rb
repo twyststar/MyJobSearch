@@ -14,8 +14,16 @@ describe(Calendar) do
   describe('#find_date') do
     it("returns the id of the found date") do
       test_month = Calendar.create(:date => 'Wed, 17 May 2017', :notes =>"formal interview")
-      test_month1 = Calendar.create(:date => 'Wed, 17 May 2017', :notes =>"coffee interview")
+      test_month1 = Calendar.create(:date => 'Wed, 17 May 2017', :notes =>"phone interview")
       expect(Calendar.find_date('2017-05-17')).to eq([test_month.id, test_month1.id])
+    end
+  end
+
+  describe('#find_notes') do
+    it("returns the id of the found date") do
+      test_month = Calendar.create(:date => 'Wed, 17 May 2017', :notes =>"formal interview")
+      test_month1 = Calendar.create(:date => 'Wed, 17 May 2017', :notes =>"phone interview")
+      expect(Calendar.find_notes('2017-05-17')).to eq(2)
     end
   end
 
