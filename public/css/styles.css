@@ -19,6 +19,11 @@
   background-color: green;
 }*/
 
+#pencil {
+  background-color: pink;
+  height: 20px;
+}
+
 #previous-icon {
   padding-left: 21%;
 }
