@@ -47,10 +47,14 @@
         <% end %>
       </div>
     <% end %>
-    <div class="form-group">
-      <label for="notes">Notes:</label>
-      <input type="text" id="notes" name="notes">
-    </div>
     <button class="btn btn-info" type="submit" name="button">Submit</button>
   </form>
+  <div class="form-group">
+    <form class="" action="/note_new" method="post">
+      <input type="hidden" name="opening_id" value="<%= @opening.id %>">
+      <label for="notes">Add Notes:</label>
+      <input type="text" id="notes" name="notes">
+      <button type="submit" name="button">Add</button>
+    </form>
+  </div>
 </div>

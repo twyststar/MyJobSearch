@@ -80,9 +80,10 @@ end
 post('/openings/new') do
   tag_ids = (params[:tag_ids])
   contact_ids = (params[:contact_ids])
+  notes = Note.create({:notes => (params[:notes])})
   organization_id = params.fetch('organization_id').to_i
-  new_opening = Opening.create({:name => (params[:name]), :location => (params[:location]), :desc => (params[:desc]), :salary => (params[:salary]), :link => (params[:link]), :organization_id => organization_id, :notes => (params[:notes])})
-
+  new_opening = Opening.create({:name => (params[:name]), :location => (params[:location]), :desc => (params[:desc]), :salary => (params[:salary]), :link => (params[:link]), :organization_id => organization_id})
+  new_opening.notes.push(notes)
   if contact_ids!= nil
     contact_ids.each do |contact_id|
       new_opening.contacts.push(Contact.find(contact_id))
@@ -119,6 +120,14 @@ patch('/opening_edit/:id') do
     end
   end
     redirect ('/single_opening/' + params[:id])
+end
+
+post('/note_new')do
+  opening_id = (params[:opening_id]).to_i
+  opening = Opening.find(opening_id)
+  note = Note.create({:notes => (params[:notes])})
+  opening.notes.push(note)
+  redirect ('/single_opening/' + (params[:opening_id]))
 end
 
 get('/single_opening/:id') do

@@ -10,19 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170517000944) do
+ActiveRecord::Schema.define(version: 20170517160604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "calendars", force: :cascade do |t|
     t.date "date"
-    t.string "notes"
   end
 
   create_table "calendars_notes", force: :cascade do |t|
     t.integer "calendar_id"
-    t.integer "interview_id"
+    t.integer "note_id"
   end
 
   create_table "calendars_openings", force: :cascade do |t|
@@ -43,12 +42,11 @@ ActiveRecord::Schema.define(version: 20170517000944) do
     t.string "email"
     t.string "linkedin"
     t.string "context"
-    t.string "notes"
   end
 
   create_table "contacts_notes", force: :cascade do |t|
-    t.integer "calendar_id"
-    t.integer "interview_id"
+    t.integer "contact_id"
+    t.integer "note_id"
   end
 
   create_table "contacts_openings", force: :cascade do |t|
@@ -73,8 +71,8 @@ ActiveRecord::Schema.define(version: 20170517000944) do
   end
 
   create_table "interviews_notes", force: :cascade do |t|
-    t.integer "calendar_id"
     t.integer "interview_id"
+    t.integer "note_id"
   end
 
   create_table "my_links", force: :cascade do |t|
@@ -87,13 +85,13 @@ ActiveRecord::Schema.define(version: 20170517000944) do
   end
 
   create_table "notes_openings", force: :cascade do |t|
-    t.integer "calendar_id"
-    t.integer "interview_id"
+    t.integer "note_id"
+    t.integer "opening_id"
   end
 
   create_table "notes_organizations", force: :cascade do |t|
-    t.integer "calendar_id"
-    t.integer "interview_id"
+    t.integer "note_id"
+    t.integer "organization_id"
   end
 
   create_table "openings", force: :cascade do |t|
@@ -102,7 +100,6 @@ ActiveRecord::Schema.define(version: 20170517000944) do
     t.string "desc"
     t.string "link"
     t.integer "organization_id"
-    t.string "notes"
     t.string "cover_letter"
     t.string "location"
   end

@@ -3,7 +3,7 @@ class Organization < ActiveRecord::Base
   has_and_belongs_to_many(:tags)
   has_and_belongs_to_many(:contacts)
   has_and_belongs_to_many(:calendars)
-
+  has_and_belongs_to_many(:notes)
   def not_contact
     all_contacts = Contact.all
     all_open_contact = self.contacts
