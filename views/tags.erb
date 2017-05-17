@@ -16,7 +16,7 @@
    <form class="horizontal-inline" action="/tags/new" method="post">
      <label for="name">Category/Tag Name:</label>
      <input type="text" id="name" name="name">
-     <button type="submit" name="button">Submit</button>
+     <button type="submit" name="button" class="btn">Submit</button>
    </form>
 </div>
 
@@ -31,7 +31,7 @@
         <label for="tag_ids[]"><%= tag.name %> <input type="checkbox" id="tag_ids[]" name="tag_ids[]" value="<%= tag.id %>"></label>
         <% end %>
       </div>
-      <button class="btn btn-danger" type="submit" name="button">Delete</button>
+      <button class="btn" type="submit" name="button">Delete</button>
     <% end %>
   </form>
 </div>
