@@ -15,7 +15,6 @@ describe(Calendar) do
     it("returns the id of the found date") do
       test_month = Calendar.create(:date => Time.now.months_since(1).to_date)
       test_month1 = Calendar.create(:date => Date.today)
-binding.pry  
       expect(Calendar.find_date('2017-05-17')).to eq(test_month1.id)
     end
   end
