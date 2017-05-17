@@ -21,12 +21,12 @@ class Calendar < ActiveRecord::Base
     dates = Calendar.all()
     matching_date = ""
     dates.each do |date|
-      if date = calendar_date
+      binding.pry
+      if date == calendar_date
         matching_date = date
       end
       matching_date
     end
-binding.pry
   end
 
 
