@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170517172215) do
+
+ActiveRecord::Schema.define(version: 20170517173751) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,7 +79,7 @@ ActiveRecord::Schema.define(version: 20170517172215) do
   end
 
   create_table "notes", force: :cascade do |t|
-    t.string "notes"
+    t.string "text"
   end
 
   create_table "notes_openings", force: :cascade do |t|

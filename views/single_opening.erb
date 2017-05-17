@@ -1,3 +1,4 @@
+
 <div class="well">
   <ul class="list-inline">
   <% if @opening.tags.any? %>
@@ -30,7 +31,7 @@
     <% if @opening.notes.any? %>
       <ul>
         <% @opening.notes.each do |note| %>
-        <li><%= note.notes %></li>
+        <li><%= note.text %></li>
         <% end %>
       </ul>
     <% end %>
