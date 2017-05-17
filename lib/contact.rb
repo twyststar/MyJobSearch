@@ -4,10 +4,10 @@ class Contact < ActiveRecord::Base
   has_and_belongs_to_many(:tags)
   has_and_belongs_to_many(:openings)
   has_and_belongs_to_many(:notes)
-
+  has_and_belongs_to_many(:calendars)
 
   before_destroy :kill_all
-  
+
   def not_org
     all_orgs = Organization.all
     all_cont_orgs = self.organizations

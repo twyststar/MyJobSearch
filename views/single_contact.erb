@@ -33,7 +33,14 @@
     </ul>
   </div>
   <div class="col-xs-6">
-
+    <h4>Events:</h4>
+    <% if @contact.calendars.any? %>
+      <ul>
+        <% @contact.calendars.each do |date| %>
+        <li><%= date.date %>, <%= date.notes %></li>
+        <% end %>
+      </ul>
+    <% end %>
     <ul>
       <h6>Context:</h6>
       <li><%= @contact.context %></li>

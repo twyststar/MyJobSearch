@@ -1,6 +1,7 @@
 class Calendar < ActiveRecord::Base
   has_and_belongs_to_many(:openings)
   has_and_belongs_to_many(:organizations)
+  has_and_belongs_to_many(:contacts)
 
   def days_of_month
     calendar_weeks.map do |week|

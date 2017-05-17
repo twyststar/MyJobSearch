@@ -166,6 +166,7 @@ post('/opening_event') do
   opening.calendars.push(event)
   redirect ('/single_opening/' + opening_id)
 end
+
 get('/single_opening/:id') do
   @opening = Opening.find(params.fetch("id").to_i)
   @organization = @opening.organization
@@ -250,6 +251,15 @@ get('/single_organization/edit/:id') do
   erb(:organization_edit)
 end
 
+post('/organization_event') do
+  organization_id = (params[:organization_id])
+  organization = Organization.find(organization_id.to_i)
+  date = (params[:date].to_date)
+  event = Calendar.create({:date => date, :notes => (params[:note])})
+  organization.calendars.push(event)
+  redirect ('/single_organization/' + organization_id)
+end
+
 get('/contacts') do
   @contacts = Contact.all
   @organizations = Organization.all
@@ -307,6 +317,15 @@ patch('/contact_edit/:id') do
   end
   contact.update({:name => (params[:name]), :title => (params[:title]), :address => (params[:address]), :phone => (params[:phone]), :email => (params[:email]), :linkedin => (params[:linkedin]), :context => (params[:context])})
     redirect ('/single_contact/' + params[:id])
+end
+
+post('/contact_event') do
+  contact_id = (params[:contact_id])
+  contact = Contact.find(contact_id.to_i)
+  date = (params[:date].to_date)
+  event = Calendar.create({:date => date, :notes => (params[:note])})
+  contact.calendars.push(event)
+  redirect ('/single_contact/' + contact_id)
 end
 
 post('/contact_note') do
