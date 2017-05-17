@@ -19,10 +19,7 @@ ActiveRecord::Schema.define(version: 20170517193613) do
 
   create_table "calendars", force: :cascade do |t|
     t.date "date"
-<<<<<<< HEAD
     t.string "notes"
-=======
->>>>>>> 4a56b0914d7e99f2dbbe91851bb841b982cbadd5
   end
 
   create_table "calendars_openings", force: :cascade do |t|
