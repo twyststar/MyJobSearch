@@ -1,6 +1,6 @@
 <div class="well">
   <% if @contacts.any? %>
-    <h3>All contacts:</h3>
+    <h2>All contacts: (<%= @contacts.length %>)</h2> 
     <ul>
       <% @contacts.each do |contact| %>
         <li><a href="/single_contact/<%=contact.id%>"><%= contact.name %></a></li>
