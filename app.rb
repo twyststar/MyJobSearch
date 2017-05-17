@@ -70,6 +70,18 @@ post('/tags/new') do
   erb(:tags)
 end
 
+delete("/single_tag") do
+  tag_ids = (params[:tag_ids])
+  if tag_ids!= nil
+    tag_ids.each do |tag_id|
+      tag_id.to_i
+      my_tag = Tag.find(tag_id)
+      my_tag.destroy
+    end
+  end
+  redirect('/tags')
+end
+
 get('/single_tag/:id') do
   @tag = Tag.find(params.fetch("id").to_i)
   erb(:single_tag)
