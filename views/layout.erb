@@ -29,7 +29,7 @@
           <ul>
           <% if my_links.any?%>
             <% my_links.each do |link| %>
-            <li><a href="<% link.url %>"><%=link.text%></a></li>
+            <li><a href="<%= link.url %>" target="_blank"><%=link.text%></a></li>
             <% end %>
           <% else %>
             <p>Add personal links here.</p>
@@ -45,7 +45,8 @@
                <br>
                <br>
                <button type="submit" class="btn btn-success">Submit</button>
-             </form>
+             </form>  
+              <a href="/my_link/edit"><button type="submit" name="button">Remove a Link</button></a>
           </div>
         </div>
         <div class="col-md-10">

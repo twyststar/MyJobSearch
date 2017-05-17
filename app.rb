@@ -15,6 +15,28 @@ get('/') do
   erb(:index)
 end
 
+post('/my_link/new') do
+  my_link = My_link.create({:text => (params[:text]), :url => (params[:url])})
+  redirect ('/')
+end
+
+get('/my_link/edit') do
+  @links = My_link.all
+  erb(:link_edit)
+end
+
+delete("/link_delete") do
+  link_ids = (params[:link_ids])
+  if link_ids!= nil
+    link_ids.each do |link_id|
+      link_id.to_i
+      my_link = My_link.find(link_id)
+      my_link.destroy
+    end
+  end
+  redirect('/')
+end
+
 get('/previous_month/:counter') do
   @count = params[:counter].to_i - 1
   @starting_date = Time.now.months_since(@count).to_date
