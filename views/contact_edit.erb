@@ -47,10 +47,22 @@
         <% end %>
       </div>
     <% end %>
-    <div class="form-group">
-      <label for="notes">Notes:</label>
-      <input type="text" id="notes" name="notes">
-    </div>
     <button class="btn btn-info" type="submit" name="button">Submit</button>
+  </form>
+
+  <form class="" action="/contact_note" method="post">
+    <input type="hidden" name="contact_id" value="<%= @contact.id %>">
+    <div class="form-group">
+      <label for="text">Add Notes:</label>
+      <input type="text" id="text" name="text">
+    </div>
+    <button type="submit" name="button">Add</button>
+  </form>
+</div>
+
+<div class="well">
+  <form action="/contact_edit/<%=@contact.id%>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button class="btn btn-danger" type="submit" name="button">Delete <%=@contact.name%>?</button>
   </form>
 </div>

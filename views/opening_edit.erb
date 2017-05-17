@@ -50,11 +50,18 @@
     <button class="btn btn-info" type="submit" name="button">Submit</button>
   </form>
   <div class="form-group">
-    <form class="" action="/note_new" method="post">
+    <form class="" action="/opening_note" method="post">
       <input type="hidden" name="opening_id" value="<%= @opening.id %>">
-      <label for="notes">Add Notes:</label>
-      <input type="text" id="notes" name="notes">
+      <label for="text">Add Notes:</label>
+      <input type="text" id="text" name="text">
       <button type="submit" name="button">Add</button>
     </form>
   </div>
+</div>
+
+<div class="well">
+  <form action="/opening_edit/<%=@opening.id%>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button class="btn btn-danger" type="submit" name="button">Delete <%=@opening.name%>?</button>
+  </form>
 </div>

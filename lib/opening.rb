@@ -7,6 +7,8 @@ class Opening < ActiveRecord::Base
   has_and_belongs_to_many(:tags)
   has_many(:interviews)
 
+  before_destroy :kill_all
+
   def not_tag
     all_tags = Tag.all
     all_open_tag = self.tags
@@ -18,4 +20,14 @@ class Opening < ActiveRecord::Base
     all_open_contact = self.contacts
     remain_contact = all_contacts - all_open_contact
   end
+
+  private
+
+    def kill_all
+      self.organization.delete_all
+      self.tags.delete_all
+      self.contacts.delete_all
+      self.notes.delete_all
+      self.calendars.delete_all
+    end
 end
