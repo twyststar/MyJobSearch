@@ -24,6 +24,11 @@
   margin: 0;
 }
 
+form {
+  padding-left: 15px;
+
+}
+
 .week-days {
   margin: 0;
   padding: 10px 0;
@@ -49,4 +54,26 @@
 .btn {
   color: #9b9b9b;
   background-color: black;
+}
+
+h1 {
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+}
+
+h2 {
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+}
+
+h3 {
+  font-family: 'Lato', sans-serif;
+}
+
+h4 {
+  font-family: 'Lato', sans-serif;
+}
+
+p {
+  font-family: 'Lora', serif;
 }
