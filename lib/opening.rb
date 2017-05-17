@@ -24,7 +24,6 @@ class Opening < ActiveRecord::Base
   private
 
     def kill_all
-      self.organization.delete_all
       self.tags.delete_all
       self.contacts.delete_all
       self.notes.delete_all
