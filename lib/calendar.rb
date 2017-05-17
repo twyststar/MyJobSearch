@@ -17,4 +17,17 @@ class Calendar < ActiveRecord::Base
     (first_calendar_day .. last_calendar_day).to_a.in_groups_of(7)
   end
 
+  def self.find_date(calendar_date)
+    dates = Calendar.all()
+    matching_date = ""
+    dates.each do |date|
+      binding.pry
+      if date == calendar_date
+        matching_date = date
+      end
+      matching_date
+    end
+  end
+
+
 end
