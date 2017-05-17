@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516154128) do
+ActiveRecord::Schema.define(version: 20170517000944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,6 +18,11 @@ ActiveRecord::Schema.define(version: 20170516154128) do
   create_table "calendars", force: :cascade do |t|
     t.date "date"
     t.string "notes"
+  end
+
+  create_table "calendars_notes", force: :cascade do |t|
+    t.integer "calendar_id"
+    t.integer "interview_id"
   end
 
   create_table "calendars_openings", force: :cascade do |t|
@@ -41,6 +46,11 @@ ActiveRecord::Schema.define(version: 20170516154128) do
     t.string "notes"
   end
 
+  create_table "contacts_notes", force: :cascade do |t|
+    t.integer "calendar_id"
+    t.integer "interview_id"
+  end
+
   create_table "contacts_openings", force: :cascade do |t|
     t.integer "contact_id"
     t.integer "opening_id"
@@ -60,6 +70,30 @@ ActiveRecord::Schema.define(version: 20170516154128) do
     t.string "location"
     t.integer "opening_id"
     t.integer "calendar_id"
+  end
+
+  create_table "interviews_notes", force: :cascade do |t|
+    t.integer "calendar_id"
+    t.integer "interview_id"
+  end
+
+  create_table "my_links", force: :cascade do |t|
+    t.string "text"
+    t.string "url"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.string "notes"
+  end
+
+  create_table "notes_openings", force: :cascade do |t|
+    t.integer "calendar_id"
+    t.integer "interview_id"
+  end
+
+  create_table "notes_organizations", force: :cascade do |t|
+    t.integer "calendar_id"
+    t.integer "interview_id"
   end
 
   create_table "openings", force: :cascade do |t|

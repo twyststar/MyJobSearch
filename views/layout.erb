@@ -13,24 +13,45 @@
         <div class="col-md-12 col-md-12 jumbotron">
           <h1>Job Search</h1>
           <div class='navbar'>
-        <ul class='nav nav-tabs'>
-          <li><a href='/'>Main Page</a></li>
-          <li><a href='/tags'>Tags</a></li>
-          <li><a href='/contacts'>Contacts</a></li>
-          <li><a href='/openings'>Openings</a></li>
-          <li><a href='/organizations'>Organizations</a></li>
-        </ul>
-      </div>
+            <ul class='nav nav-tabs'>
+              <li><a href='/'>Main Page</a></li>
+              <li><a href='/tags'>Tags</a></li>
+              <li><a href='/contacts'>Contacts</a></li>
+              <li><a href='/openings'>Openings</a></li>
+              <li><a href='/organizations'>Organizations</a></li>
+            </ul>
+          </div>
         </div>
-        <div class="col-md-1">
 
+        <div class="col-md-2 well">
+          <h3>My Links</h3>
+          <% my_links = My_link.all%>
+          <ul>
+          <% if my_links.any?%>
+            <% my_links.each do |link| %>
+            <li><a href="<% link.url %>"><%=link.text%></a></li>
+            <% end %>
+          <% else %>
+            <p>Add personal links here.</p>
+          <%end %>
+          </ul>
+          <div class="">
+             <form class="" action="/my_link/new" method="post">
+               <label for="text">Link Text:</label>
+               <input type="text" id="text" name="text">
+               <label for="url">Link url:</label>
+               <p>(copy and paste the <em>entire</em> web address)</p>
+               <input type="text" id="url" name="url">
+               <br>
+               <br>
+               <button type="submit" class="btn btn-success">Submit</button>
+             </form>
+          </div>
         </div>
         <div class="col-md-10">
           <%= yield %>
         </div>
-        <div class="col-md-1">
 
-        </div>
       </div>
     </div>
 
