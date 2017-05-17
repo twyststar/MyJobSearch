@@ -4,7 +4,7 @@
 
 <div class="well row">
   <div class="col-xs-4">
-    <h4>Associated Contacts:</h4>
+    <h3>Associated Contacts:</h3>
     <% if @tag.contacts.any? %>
       <ul>
         <% @tag.contacts.each do |contact| %>
@@ -12,12 +12,12 @@
           <% end %>
       </ul>
     <% else %>
-      <h3>No contacts have this tag.</h3>
+      <h4>No contacts have this tag.</h4>
     <% end %>
   </div>
 
   <div class="col-xs-4">
-    <h4>Associated Organizations:</h4>
+    <h3>Associated Organizations:</h3>
     <% if @tag.organizations.any? %>
       <ul>
         <% @tag.organizations.each do |org| %>
@@ -25,12 +25,12 @@
           <% end %>
       </ul>
     <% else %>
-      <h3>No organizations have this tag.</h3>
+      <h4>No organizations have this tag.</h4>
     <% end %>
   </div>
 
   <div class="col-xs-4">
-    <h4>Associated Openings:</h4>
+    <h3>Associated Openings:</h3>
     <% if @tag.openings.any? %>
       <ul>
         <% @tag.openings.each do |opening| %>
@@ -38,7 +38,7 @@
           <% end %>
       </ul>
     <% else %>
-      <h3>No openings have this tag.</h3>
+      <h4>No openings have this tag.</h4>
     <% end %>
   </div>
 </div>

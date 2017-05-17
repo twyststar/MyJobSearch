@@ -1,6 +1,6 @@
 <div class="well">
   <% if @contacts.any? %>
-    <h2>All contacts: (<%= @contacts.length %>)</h2> 
+    <h2>All contacts: (<%= @contacts.length %>)</h2>
     <ul>
       <% @contacts.each do |contact| %>
         <li><a href="/single_contact/<%=contact.id%>"><%= contact.name %></a></li>
@@ -28,7 +28,7 @@
     </div>
     <div class="form-group">
       <label for="phone">Phone:</label>
-      <input type="text" id="phone" name="phone">
+      <input type="tel" id="phone" name="phone">
     </div>
     <div class="form-group">
       <label for="email">Email:</label>
@@ -36,7 +36,7 @@
     </div>
     <div class="form-group">
       <label for="linkedin">LinkedIn:</label>
-      <input type="text" id="linkedin" name="linkedin">
+      <input type="url" id="linkedin" name="linkedin">
     </div>
     <div class="form-group">
       <label for="context">The context of the contact:</label>

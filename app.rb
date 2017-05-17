@@ -289,7 +289,6 @@ end
 
 get('/single_contact/:id') do
   @contact = Contact.find(params.fetch("id").to_i)
-
   erb(:single_contact)
 end
 
