@@ -49,6 +49,34 @@
 </div>
 
 <div class="well">
+  <form class="" action="/organization_tag_delete" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="hidden" name="organization_id" value="<%= @organization.id %>">
+<% if @organization.tags.any? %>
+  <div class="form-group">
+    <h4>Select tags to remove:</h4>
+    <% @organization.tags.each do |tag| %>
+    <label for="tag_ids[]"><%= tag.name %> <input type="checkbox" id="tag_ids[]" name="tag_ids[]" value="<%= tag.id %>"></label>
+    <% end %>
+  </div>
+<button type="submit" name="button" class="btn">Delete Selected</button>
+  <% end %>
+</form>
+
+<form class="" action="/organization_contact_delete" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <input type="hidden" name="organization_id" value="<%= @organization.id %>">
+<% if @organization.contacts.any? %>
+<div class="form-group">
+  <h4>Select contacts to remove:</h4>
+  <% @organization.contacts.each do |contact| %>
+  <label for="contact_ids[]"><%= contact.name %> <input type="checkbox" id="contact_ids[]" name="contact_ids[]" value="<%= contact.id %>"></label>
+  <% end %>
+</div>
+<button type="submit" name="button" class="btn">Delete Selected</button>
+<% end %>
+</form>
+<br>
   <form action="/organizations_edit/<%=@organization.id%>" method="post">
     <input type="hidden" name="_method" value="delete">
     <button class="btn " type="submit" name="button">Delete <%=@organization.name%>?</button>

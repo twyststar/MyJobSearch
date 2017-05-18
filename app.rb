@@ -232,9 +232,6 @@ get('/single_opening/edit/:id') do
   erb(:opening_edit)
 end
 
-
-
-
 delete("/open_tag_delete") do
   opening_id = (params[:opening_id]).to_i
   opening = Opening.find(opening_id)
@@ -248,6 +245,8 @@ delete("/open_tag_delete") do
   end
   redirect('/single_opening/' + opening_id.to_s)
 end
+
+
 
 get('/organizations') do
   @contacts = Contact.all
@@ -325,6 +324,34 @@ post('/organization_event') do
   event = Calendar.create({:date => date, :notes => (params[:note])})
   organization.calendars.push(event)
   redirect ('/single_organization/' + organization_id)
+end
+
+delete("/organization_tag_delete") do
+  organization_id = (params[:organization_id]).to_i
+  organization = Organization.find(organization_id)
+  tag_ids = (params[:tag_ids])
+  if tag_ids!= nil
+    tag_ids.each do |tag_id|
+      tag_id.to_i
+      my_tag = Tag.find(tag_id)
+      organization.tags.delete(my_tag)
+    end
+  end
+  redirect('/single_organization/' + organization_id.to_s)
+end
+
+delete("/organization_contact_delete") do
+  organization_id = (params[:organization_id]).to_i
+  organization = Organization.find(organization_id)
+  contact_ids = (params[:contact_ids])
+  if contact_ids!= nil
+    contact_ids.each do |contact_id|
+      contact_id.to_i
+      my_contact = Contact.find(contact_id)
+      organization.contacts.delete(my_contact)
+    end
+  end
+  redirect('/single_organization/' + organization_id.to_s)
 end
 
 get('/contacts') do
@@ -410,6 +437,35 @@ delete('/contact_edit/:id') do
   contact.delete
   erb(:contacts)
 end
+
+delete("/contact_tag_delete") do
+  contact_id = (params[:contact_id]).to_i
+  contact = Contact.find(contact_id)
+  tag_ids = (params[:tag_ids])
+  if tag_ids!= nil
+    tag_ids.each do |tag_id|
+      tag_id.to_i
+      my_tag = Tag.find(tag_id)
+      contact.tags.delete(my_tag)
+    end
+  end
+  redirect('/single_contact/' + contact_id.to_s)
+end
+
+delete("/contact_organization_delete") do
+  contact_id = (params[:contact_id]).to_i
+  contact = Contact.find(contact_id)
+  organization_ids = (params[:organization_ids])
+  if organization_ids!= nil
+    organization_ids.each do |organization_id|
+      organization_id.to_i
+      my_organization = Organization.find(organization_id)
+      contact.organizations.delete(my_organization)
+    end
+  end
+  redirect('/single_contact/' + contact_id.to_s)
+end
+
 
 get('/events') do
   @contacts = Contact.all

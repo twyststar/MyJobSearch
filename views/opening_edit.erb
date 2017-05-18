@@ -92,9 +92,10 @@
     <label for="tag_ids[]"><%= tag.name %> <input type="checkbox" id="tag_ids[]" name="tag_ids[]" value="<%= tag.id %>"></label>
     <% end %>
   </div>
-<% end %>
-<button type="submit" name="button" class="btn">Delete Selected</button>
-</form>
+  <button type="submit" name="button" class="btn">Delete Selected</button>
+  <% end %>
+  </form>
+
   <br>
   <form action="/opening_edit/<%=@opening.id%>" method="post">
     <input type="hidden" name="_method" value="delete">
