@@ -8,42 +8,40 @@
   <% end %>
 </ul>
 </div>
-<div class="well row">
-  <div class="col-sm-6">
-    <h3>Position: <%= @opening.name %> @ <a href="/single_organization/<%=@opening.organization.id%>"><%= @opening.organization.name%></a></h3>
-    <br>
-    <ul>
-      <h6>Location:</h6>
-      <li><%= @opening.location %></li>
-      <h6>Salary:</h6>
-      <li><%= @opening.salary %></li>
-      <ul>
-        <h6>Brief description:</h6>
-        <li><%= @opening.desc %></li>
-        <h6>Link:</h6>
-        <li><a href="" target="_blank"><%= @opening.link %></a></li>
-      </ul>
-    </ul>
-  </div>
-
-  <div class="col-sm-6">
-    <h4>Events:</h4>
-    <% if @opening.calendars.any? %>
-      <ul>
-        <% @opening.calendars.each do |date| %>
-        <li><%= date.date %>, <%= date.notes %></li>
-        <% end %>
-      </ul>
-    <% end %>
-    <h5>Notes:</h5>
-    <% if @opening.notes.any? %>
-      <ul>
-        <% @opening.notes.each do |note| %>
-        <li><%= note.text %></li>
-        <% end %>
-      </ul>
-    <% end %>
-  </div>
-
+<div class="well">
+  <h3>Position: <%= @opening.name %> @ <a href="/single_organization/<%=@opening.organization.id%>"><%= @opening.organization.name%></a></h3>
 </div>
+<div class="col-sm-6 well">
+  <ul>
+    <h6>Location:</h6>
+    <li><%= @opening.location %></li>
+    <h6>Salary:</h6>
+    <li><%= @opening.salary %></li>
+    <ul>
+      <h6>Brief description:</h6>
+      <li><%= @opening.desc %></li>
+      <h6>Link:</h6>
+      <li><a href="<%= @opening.link %>" target="_blank"><%= @opening.link %></a></li>
+    </ul>
+  </ul>
+</div>
+<div class="col-sm-6 well">
+  <h4>Events:</h4>
+  <% if @opening.calendars.any? %>
+    <ul>
+      <% @opening.calendars.each do |date| %>
+      <li><%= date.date %>, <%= date.notes %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <h5>Notes:</h5>
+  <% if @opening.notes.any? %>
+    <ul>
+      <% @opening.notes.each do |note| %>
+      <li><%= note.text %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
 <button type="button" class="btn btn-block">Edit this opening:<a href="/single_opening/edit/<%= @opening.id %>"> CLICK HERE</a> to add notes, contacts, events etc.</button>
