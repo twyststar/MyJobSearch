@@ -6,7 +6,7 @@ class Opening < ActiveRecord::Base
   has_and_belongs_to_many(:notes)
   has_and_belongs_to_many(:tags)
   has_many(:interviews)
-
+  validates(:name, :presence => true)
   before_destroy :kill_all
 
   def not_tag

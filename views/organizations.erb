@@ -2,7 +2,7 @@
 
   <% if @organizations.any? %>
     <h3>All organizations:</h3>
-    <ul>
+    <ul class="list-inline">
       <% @organizations.each do |organization| %>
         <li><a href="/single_organization/<%= organization.id %>"><%= organization.name %></a></li>
       <% end %>

@@ -8,11 +8,12 @@
   </ul>
 </div>
 
-<div class="well row">
-  <div class="col-xs-6">
-    <h2><%= @contact.name %></h2>
-    <h4><%= @contact.title %></h4>
-    <br>
+<div class="well">
+  <h2><%= @contact.name %></h2>
+  <h4><%= @contact.title %></h4>
+</div>
+
+  <div class="col-xs-6 well min">
     <ul>
     <% if @contact.organizations.any? %>
       <h6>Organizations:</h6>
@@ -32,7 +33,7 @@
       <li><a href="<%= @contact.linkedin %>" target="_blank"><%= @contact.linkedin %></a></li>
     </ul>
   </div>
-  <div class="col-xs-6">
+  <div class="col-xs-6 well min">
     <h4>Events:</h4>
     <% if @contact.calendars.any? %>
       <ul>
@@ -51,8 +52,7 @@
       <% end %>
       </ul>
     </ul>
-
   </div>
-</div>
+
 
 <button type="button" class="btn btn-block">Edit this contact:<a href="/single_contact/edit/<%= @contact.id %>"> CLICK HERE </a> to add events, tags, or change information.</button>

@@ -1,6 +1,6 @@
 <div class="well">
   <% if @tags.any? %>
-    <ul>
+    <ul class="list-inline">
       <% @tags.each do |tag| %>
       <li><a href="/single_tag/<%= tag.id %>"><%= tag.name %></a></li>
       <% end %>
@@ -8,8 +8,6 @@
   <% else %>
     <h3>No tags yet.</h3>
   <% end %>
-
-
 </div>
 
 <div class="well">

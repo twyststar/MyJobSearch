@@ -4,8 +4,8 @@ class Organization < ActiveRecord::Base
   has_and_belongs_to_many(:contacts)
   has_and_belongs_to_many(:calendars)
   has_and_belongs_to_many(:notes)
-
-  validates_uniqueness_of :name
+  validates(:name, :presence => true)
+  validates_uniqueness_of :name, :case_sensitive => false
   before_destroy :kill_all
 
   def not_contact

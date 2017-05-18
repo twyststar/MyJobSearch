@@ -5,6 +5,8 @@
       <% @opening.tags.each do |tag| %>
       <li><a href="/single_tag/<%=tag.id%>"><%= tag.name %></a></li>
       <% end %>
+  <%else %>
+    <h3>No tags yet.</h3>
   <% end %>
 </ul>
 </div>

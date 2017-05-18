@@ -1,7 +1,7 @@
 <div class="well">
   <% if @contacts.any? %>
     <h2>All contacts: (<%= @contacts.length %>)</h2>
-    <ul>
+    <ul class="list-inline">
       <% @contacts.each do |contact| %>
         <li><a href="/single_contact/<%=contact.id%>"><%= contact.name %></a></li>
         <% end %>

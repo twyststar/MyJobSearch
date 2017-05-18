@@ -5,7 +5,7 @@ class Contact < ActiveRecord::Base
   has_and_belongs_to_many(:openings)
   has_and_belongs_to_many(:notes)
   has_and_belongs_to_many(:calendars)
-
+  validates(:name, :presence => true)
   before_destroy :kill_all
 
   def not_org
