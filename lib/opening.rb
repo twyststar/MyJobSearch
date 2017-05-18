@@ -32,6 +32,17 @@ class Opening < ActiveRecord::Base
     return result.join('')
   end
 
+  def event_clean
+    self.calendars.each do |date|
+      if date.notes == "Applied. "
+        date.delete
+      end
+      if date.notes == "Two weeks since apply date. Check in. "
+        date.delete
+      end
+    end 
+  end
+
 private
 
     def kill_all

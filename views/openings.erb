@@ -36,6 +36,7 @@
     </div>
     <% if @organizations.any? %>
       <div class="form-group">
+        <h4>Associated Organization:</h4>
         <select name="organization_id">
           <% @organizations.each do |organization| %>
             <option value="<%= organization.id %>"><%= organization.name %></option>

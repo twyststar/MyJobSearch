@@ -6,7 +6,7 @@
       <% @calendar_events.each() do |event_id| %>
         <% event = Calendar.find(event_id) %>
         <li>
-        <%= event.notes() %>,
+        <%= event.notes() %>-
         <% if event.organizations.any?%>
           <% event.organizations.each do |org| %>
             <a href="/single_organization/<%= org.id %>"><%= org.name %></a>

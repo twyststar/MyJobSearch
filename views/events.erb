@@ -1,0 +1,62 @@
+<div class="well col-sm-6 min">
+  <% if @calendars.any? %>
+    <ul>
+      <% @calendars.each() do |event| %>
+        <li>
+        <%= event.date() %>: <%= event.notes() %>-
+        <% if event.organizations.any?%>
+          <% event.organizations.each do |org| %>
+            <a href="/single_organization/<%= org.id %>"><%= org.name %></a>
+          <% end %>
+        </li>
+        <% elsif event.openings.any?%>
+          <% event.openings.each do |opening| %>
+            <a href="/single_opening/<%= opening.id %>"><%= opening.name %></a>
+          <% end %>
+        </li>
+        <% elsif event.contacts.each do |contact| %>
+          <a href="/single_contact/<%= contact.id %>"><%= contact.name %></a>
+        <% end %>
+        </li>
+          <% end %>
+      <% end %>
+    </ul>
+  <% else %>
+    <h4>No events yet</h4>
+  <% end %>
+
+</div>
+
+<div class="well col-sm-6 min">
+  <h4>Delete an event.</h4>
+  <form class="" action="/event" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <% if @calendars.any? %>
+      <div class="form-group">
+        <ul>
+          <% @calendars.each do |calendar| %>
+          <li><label for="calendar_ids[]"><%= calendar.notes%>
+            <% if calendar.organizations.any?%>
+              <% calendar.organizations.each do |org| %>
+                <a href="/single_organization/<%= org.id %>"><%= org.name %></a>
+              <% end %>
+
+            <% elsif calendar.openings.any?%>
+              <% calendar.openings.each do |opening| %>
+                <a href="/single_opening/<%= opening.id %>"><%= opening.name %></a>
+              <% end %>
+
+            <% elsif calendar.contacts.each do |contact| %>
+              <a href="/single_contact/<%= contact.id %>"><%= contact.name %></a>
+            <% end %>
+
+            <% end %>
+            <input type="checkbox" id="calendar_ids[]" name="calendar_ids[]" value="<%= calendar.id %>"></label></li>
+          <% end %>
+        </ul>
+
+      </div>
+      <button class="btn" type="submit" name="button">Delete</button>
+    <% end %>
+  </form>
+</div>

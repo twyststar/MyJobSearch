@@ -122,10 +122,21 @@ end
 
 patch('/opening_edit/:id') do
   @opening = Opening.find(params.fetch("id").to_i)
+  if @opening.calendars.any?
+    @opening.event_clean
+  end
   tag_ids = (params[:tag_ids])
   contact_ids = (params[:contact_ids])
+  applied = (params[:applied])
   organization_id = params.fetch('organization_id').to_i
-  @opening.update({:name => (params[:name]), :location => (params[:location]), :desc => (params[:desc]), :salary => (params[:salary]), :link => (params[:link]), :organization_id => organization_id})
+
+  @opening.update({:name => (params[:name]), :location => (params[:location]), :desc => (params[:desc]), :salary => (params[:salary]), :link => (params[:link]), :applied => applied, :organization_id => organization_id})
+  if applied == "true"
+    cal_applied_date = Calendar.create({:date => Date.today, :notes => "Applied. "})
+    cal_call_back = Calendar.create({:date => Time.now.days_since(14).to_date, :notes => "Two weeks since apply date. Check in. "})
+    @opening.calendars.push(cal_applied_date)
+    @opening.calendars.push(cal_call_back)
+  end
   if tag_ids!= nil
     tag_ids.each do |tag_id|
       tag_id.to_i
@@ -342,4 +353,25 @@ delete('/contact_edit/:id') do
   contact = Contact.find(params[:id].to_i)
   contact.delete
   erb(:contacts)
+end
+
+get('/events') do
+  @contacts = Contact.all
+  @organizations = Organization.all
+  @openings = Opening.all
+  @tags = Tag.all
+  @calendars = Calendar.all
+  erb(:events)
+end
+
+delete('/event') do
+  calendar_ids = (params[:calendar_ids])
+  if calendar_ids != nil
+    calendar_ids.each do |cal_id|
+      cal_id.to_i
+      cal_to_kill = Calendar.find(cal_id)
+      cal_to_kill.destroy
+    end
+  end
+  redirect ('/events')
 end

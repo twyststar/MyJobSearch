@@ -23,10 +23,13 @@
       <input type="text" id="link" name="link" value="<%= @opening.link %>">
     </div>
     <div class="form-group">
-      <h4>Applied status:</h4>
-      <label for="applied"><input type="radio" name="applied" value="false"> False</label>
+      <h4>Change applied status:</h4>
+      <% if @opening.applied == true %>
+      <label for="applied"><input type="radio" name="applied" value= false> False</label>
       <br>
-      <label for="applied"><input type="radio" name="applied" value="true"> True</label>
+      <% else %>
+      <label for="applied"><input type="radio" name="applied" value= true > True</label>
+      <% end %>
     </div>
     <% if @organizations.any? %>
       <div class="form-group">
