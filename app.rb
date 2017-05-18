@@ -3,6 +3,46 @@ Bundler.require(:default)
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 require('pry')
 
+get('/login') do
+  erb :sign_in, :layout => :layout_login
+end
+
+post('/login') do
+  user_name = params[:username]
+  password = params[:password]
+  user_id = Login.find_user(user_name)
+  if user_id != 0
+    user = Login.find(user_id)
+    if user.password == password.encrypt(:symmetric, :password => 'secret_key')
+      redirect ('/')
+    else
+      @error_message = "Password mismatch"
+      erb :sign_in, :layout => :layout_login
+    end
+  else
+    @error_message = "Not a registered user"
+    erb :sign_in, :layout => :layout_login
+  end
+end
+
+post('/register') do
+  user_name = params[:username]
+  password = params[:password]
+  user_id = Login.find_user(user_name)
+  if user_id == 0
+    new_user = Login.new(:user_name => user_name, :password => password)
+    if new_user.save
+        redirect ('/')
+    else
+      @error = new_user
+      erb :sign_in, :layout => :layout_login
+    end
+  else
+    @error_message = user_name + " User name is taken. Please try another user name"
+    erb :sign_in, :layout => :layout_login
+  end
+end
+
 get('/') do
   @tags = Tag.all()
   if Organization.all == []
