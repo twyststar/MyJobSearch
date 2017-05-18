@@ -415,3 +415,8 @@ delete('/event') do
   end
   redirect ('/events')
 end
+post('/new_event') do
+  date = (params[:date].to_date)
+  Calendar.create({:date => date, :notes => (params[:note]) })
+  redirect ('/events')
+end

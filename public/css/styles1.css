@@ -120,3 +120,7 @@ body {
 	background-color: #1CA347;
 	border-color: #1CA347;
 }
+body {
+  background-color: blue;
+  background-image: url('/img/gray.jpg');
+}

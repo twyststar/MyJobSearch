@@ -92,9 +92,9 @@
           <h3>My Links</h3>
           <% my_links = My_link.all%>
           <ul>
-            <li><a href="https://www.indeed.com/">Indeed</a></li>
-            <li><a href="https://www.glassdoor.com/index.htm">Glassdoor</a></li>
-            <li><a href="https://www.meetup.com/">Meetup</a></li>
+            <li><a href="https://www.indeed.com/" target="_blank">Indeed</a></li>
+            <li><a href="https://www.glassdoor.com/index.htm" target="_blank">Glassdoor</a></li>
+            <li><a href="https://www.meetup.com/" target="_blank">Meetup</a></li>
           <% if my_links.any?%>
             <% my_links.each do |link| %>
             <li><a href="<%= link.url %>" target="_blank"><%=link.text%></a></li>
