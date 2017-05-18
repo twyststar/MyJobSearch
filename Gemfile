@@ -5,6 +5,8 @@ gem('sinatra-activerecord')
 gem('rake')
 gem('pg')
 gem('sinatra')
+gem('rerun')
+gem('encrypted_strings')
 
 
 group(:test) do
