@@ -21,7 +21,18 @@ class Opening < ActiveRecord::Base
     remain_contact = all_contacts - all_open_contact
   end
 
-  private
+  def link_display
+    disp = self.link.split("")
+    count = 8
+    result=[]
+    until count == 25
+      result.push(disp[count])
+      count +=1
+    end
+    return result.join('')
+  end
+
+private
 
     def kill_all
       self.tags.delete_all

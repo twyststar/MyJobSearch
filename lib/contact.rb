@@ -18,6 +18,17 @@ class Contact < ActiveRecord::Base
     all_cont_tags = self.tags
     remain_tag = all_tags - all_cont_tags
   end
+
+  def link_display
+    disp = self.link.split("")
+    count = 8
+    result=[]
+    until count == 23
+      result.push(disp[count])
+    end
+    return result.join('')
+  end
+
 private
   def kill_all
     self.organizations.delete_all
@@ -26,4 +37,6 @@ private
     self.notes.delete_all
     self.calendars.delete_all
   end
+
+
 end

@@ -19,6 +19,17 @@ class Organization < ActiveRecord::Base
     remain_tag = all_tags - all_open_tag
   end
 
+  def link_display
+    disp = self.link.split("")
+    count = 8
+    result=[]
+    until count == 25
+      result.push(disp[count])
+      count +=1
+    end
+    return result.join('')
+  end
+  
   private
 
     def kill_all
