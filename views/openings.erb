@@ -1,6 +1,6 @@
 <div class="well">
   <% if @openings.any? %>
-    <h3>All openings:</h3>
+    <h3>All openings: (<%= @openings.length %>)</h3>
     <ul>
       <% @openings.each do |opening| %>
         <li><a href="/single_opening/<%=opening.id%>"><%= opening.name %>, <%= opening.organization.name %></a></li>
