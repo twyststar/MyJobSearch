@@ -5,6 +5,7 @@ class Organization < ActiveRecord::Base
   has_and_belongs_to_many(:calendars)
   has_and_belongs_to_many(:notes)
 
+  validates_uniqueness_of :name
   before_destroy :kill_all
 
   def not_contact
@@ -29,7 +30,7 @@ class Organization < ActiveRecord::Base
     end
     return result.join('')
   end
-  
+
   private
 
     def kill_all
