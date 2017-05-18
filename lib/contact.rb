@@ -20,11 +20,12 @@ class Contact < ActiveRecord::Base
   end
 
   def link_display
-    disp = self.link.split("")
+    disp = self.linkedin.split("")
     count = 8
     result=[]
-    until count == 23
+    until count == 26
       result.push(disp[count])
+      count +=1
     end
     return result.join('')
   end

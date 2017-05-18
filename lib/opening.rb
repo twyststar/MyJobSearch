@@ -40,7 +40,13 @@ class Opening < ActiveRecord::Base
       if date.notes == "Two weeks since apply date. Check in. "
         date.delete
       end
-    end 
+    end
+  end
+
+  def organization_select_correct
+    all_orgs = Organization.all
+    open_org = self.organization
+    remain_orgs = all_orgs - open_org
   end
 
 private

@@ -226,12 +226,28 @@ end
 
 get('/single_opening/edit/:id') do
   @opening = Opening.find(params.fetch("id").to_i)
-  @organizations = Organization.all
+  @organizations_edit = Organization.all - [@opening.organization]
   @contacts = Contact.all
   @tags = Tag.all()
   erb(:opening_edit)
 end
 
+
+
+
+delete("/open_tag_delete") do
+  opening_id = (params[:opening_id]).to_i
+  opening = Opening.find(opening_id)
+  tag_ids = (params[:tag_ids])
+  if tag_ids!= nil
+    tag_ids.each do |tag_id|
+      tag_id.to_i
+      my_tag = Tag.find(tag_id)
+      opening.tags.delete(my_tag)
+    end
+  end
+  redirect('/single_opening/' + opening_id.to_s)
+end
 
 get('/organizations') do
   @contacts = Contact.all

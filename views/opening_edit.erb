@@ -31,11 +31,12 @@
       <label for="applied"><input type="radio" name="applied" value= true > True</label>
       <% end %>
     </div>
-    <% if @organizations.any? %>
+    <% if @organizations_edit.any? %>
       <div class="form-group">
         <h4>Associated Organization:</h4>
         <select name="organization_id">
-          <% @organizations.each do |organization| %>
+          <option value="<%= @opening.organization.id %>"><%= @opening.organization.name %></option>
+          <% @organizations_edit.each do |organization| %>
             <option value="<%= organization.id %>"><%= organization.name %></option>
           <% end %>
         </select>
@@ -81,6 +82,20 @@
 </div>
 
 <div class="well">
+  <form class="" action="/open_tag_delete" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="hidden" name="opening_id" value="<%= @opening.id %>">
+<% if @opening.tags.any? %>
+  <div class="form-group">
+    <h4>Select tags to remove:</h4>
+    <% @opening.tags.each do |tag| %>
+    <label for="tag_ids[]"><%= tag.name %> <input type="checkbox" id="tag_ids[]" name="tag_ids[]" value="<%= tag.id %>"></label>
+    <% end %>
+  </div>
+<% end %>
+<button type="submit" name="button" class="btn">Delete Selected</button>
+</form>
+  <br>
   <form action="/opening_edit/<%=@opening.id%>" method="post">
     <input type="hidden" name="_method" value="delete">
     <button class="btn" type="submit" name="button">Delete <%=@opening.name%>?</button>
