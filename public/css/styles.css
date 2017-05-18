@@ -89,3 +89,7 @@ p {
 .min {
   min-height: 500px;
 }
+body {
+  background-color: blue;
+  background-image: url('/img/gray.jpg');
+}

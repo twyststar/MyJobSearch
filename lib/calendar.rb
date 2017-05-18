@@ -3,8 +3,8 @@ class Calendar < ActiveRecord::Base
   has_and_belongs_to_many(:organizations)
   has_and_belongs_to_many(:contacts)
 
-  before_delete :kill_all
-  
+  before_destroy :kill_all
+
   def days_of_month
     calendar_weeks.map do |week|
       week.map do |date|
