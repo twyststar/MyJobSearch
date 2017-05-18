@@ -86,3 +86,6 @@ h4 {
 p {
   font-family: 'Lora', serif;
 }
+.min {
+  min-height: 500px;
+}
