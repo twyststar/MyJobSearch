@@ -100,7 +100,7 @@ post('/openings/new') do
   contact_ids = (params[:contact_ids])
   notes = Note.create({:text => (params[:text])})
   organization_id = params.fetch('organization_id').to_i
-  new_opening = Opening.create({:name => (params[:name]), :location => (params[:location]), :desc => (params[:desc]), :salary => (params[:salary]), :link => (params[:link]), :organization_id => organization_id})
+  new_opening = Opening.create({:name => (params[:name]), :location => (params[:location]), :desc => (params[:desc]), :salary => (params[:salary]), :link => (params[:link]), :organization_id => organization_id, :applied => false})
   new_opening.notes.push(notes)
   if contact_ids!= nil
     contact_ids.each do |contact_id|

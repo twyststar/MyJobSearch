@@ -22,8 +22,15 @@
       <label for="link">Link:</label>
       <input type="text" id="link" name="link" value="<%= @opening.link %>">
     </div>
+    <div class="form-group">
+      <h4>Applied status:</h4>
+      <label for="applied"><input type="radio" name="applied" value="false"> False</label>
+      <br>
+      <label for="applied"><input type="radio" name="applied" value="true"> True</label>
+    </div>
     <% if @organizations.any? %>
       <div class="form-group">
+        <h4>Associated Organization:</h4>
         <select name="organization_id">
           <% @organizations.each do |organization| %>
             <option value="<%= organization.id %>"><%= organization.name %></option>
@@ -35,7 +42,7 @@
       <div class="form-group">
         <h4>Contacts for this opening:</h4>
         <% @opening.not_contact.each do |contact| %>
-        <label for="contact_ids[]"><%= contact.name %> <input type="checkbox" id="contact_ids[]" name="contact_ids[]" value="<%= contact.id %>"></label>
+        <label for="contact_ids[]"><%= contact.name %>  <input type="checkbox" id="contact_ids[]" name="contact_ids[]" value="<%= contact.id %>"></label>
         <% end %>
       </div>
     <% end %>
