@@ -18,17 +18,11 @@ _This is a job search/networking tracker/database app. It is designed to help ke
 
 ## Setup/Installation Requirements
 
-* _This is a great place_
-* _to list setup instructions_
-* _in a simple_
-* _easy-to-understand_
-* _format_
-
-_{Leave nothing to chance! You want it to be easy for potential users, employers and collaborators to run your app. Do I need to run a server? How should I set up my databases? Is there other code this app depends on?}_
+* Currently there is a fatal bug in the program 
 
 ## Known Bugs
 
-_None_
+_The calendar is not functioning, causing the app to not load_
 
 ## Support and contact details
 
